@@ -65,3 +65,8 @@ exports.user_login_post = function (req, res, next) {
     });
   })(req, res, next);
 };
+
+exports.user_logout = function (req, res) {
+  req.logout();
+  res.redirect('/');
+};
