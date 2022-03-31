@@ -50,13 +50,18 @@ exports.user_create_post = [
 ];
 
 exports.user_login_get = function (req, res, next) {
-  res.render('login', { title: 'Log In' });
+  res.render('log_in', { title: 'Log In' });
 };
 
-exports.user_login_post = function () {
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/log-in',
-    failureFlash: true,
-  });
+exports.user_login_post = function (req, res, next) {
+  passport.authenticate('local', (err, user, info) => {
+    if (err) return next(err);
+    if (!user) {
+      return res.render('log_in', { title: 'Log In', errors: [info] });
+    }
+    req.logIn(user, (err) => {
+      if (err) return next(err);
+      return res.redirect('/');
+    });
+  })(req, res, next);
 };

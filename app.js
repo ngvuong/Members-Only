@@ -4,9 +4,12 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
 const path = require('path');
 const logger = require('morgan');
 require('dotenv').config();
+
+const User = require('./models/user');
 
 const IndexRouter = require('./routes/index');
 const app = express();
@@ -33,13 +36,15 @@ passport.use(
         return done(err);
       }
       if (!user) {
-        return done(null, false, { message: 'Incorrect username' });
+        return done(null, false, { msg: 'Incorrect username or password' });
       }
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
           return done(null, user);
         } else {
-          return done(null, false, { message: 'Incorrect password' });
+          return done(null, false, {
+            msg: 'Incorrect username or password',
+          });
         }
       });
     });
@@ -64,13 +69,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routers setup
-app.use('/', IndexRouter);
-
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
 });
+
+// Routers setup
+app.use('/', IndexRouter);
 
 // Catch 404
 app.use((req, res, next) => {
