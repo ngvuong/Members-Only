@@ -61,7 +61,9 @@ exports.user_login_post = function (req, res, next) {
     }
     req.logIn(user, (err) => {
       if (err) return next(err);
-      return res.redirect('/');
+      const prevUrl = req.session.prevUrl;
+      req.session.prevUrl = null;
+      return res.redirect(prevUrl || '/');
     });
   })(req, res, next);
 };
