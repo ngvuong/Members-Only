@@ -1,3 +1,25 @@
 <%- include('partials/layout') %>
 
-<main class="posts-main"></main>
+<main class="posts-main">
+  <h2 class="page-title">Posts</h2>
+  <div class="posts-container">
+    <% if(!posts.length) { %> 
+    <p>There are no posts yet</p>
+    <% } else {%> 
+      <% posts.forEach(function(post) { %>
+        <article class="post">
+          <h3 class="post__title"><%= post.title %></h3>
+          <p class="post__content"><%= post.content %></p>
+          <span class="post__author">
+            <%= 'by ' + locals.currentUser && locals.currentUser.membership !== 'none' ? post.author.username : 'Anonymous' %> 
+          </span>
+          <span class="post__timestamp">
+            <%= locals.currentUser && locals.currentUser.membership !== 'none' ? post.created : 'unknown' %> 
+          </span>
+      <% }) %> 
+    <% } %> 
+  </div>
+</main>
+
+</body>
+</html>
