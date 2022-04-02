@@ -1,0 +1,35 @@
+<%- include('partials/layout') %> 
+
+<main>
+  <h2 class="page-header">Join the Exclusive Club</h2>
+
+  <% if(locals.errors) {%>
+    <div class="alert-container">
+      <input type="checkbox" id="dismiss">
+      <label for="dismiss">×</label>
+      <div class="alert alert-danger">
+        <% errors.forEach(function(error) { %>
+          <p><%= error.msg %></p>
+        <% }) %>
+      </div>
+    </div>
+  <% } %>
+
+  <form action="" method="POST" class="form form-member">
+    <div class="form-group">
+      <label for="password">Members Acccess Code</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        placeholder="Enter code"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</main>
+
+</body>
+</html>
