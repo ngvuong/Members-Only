@@ -1,0 +1,47 @@
+<%- include('partials/layout') %>
+
+<% if(locals.errors) {%>
+  <div class="alert-container">
+    <label for="dismiss">×</label>
+    <input type="checkbox" id="dismiss">
+    <div class="alert alert-danger">
+      <% errors.forEach(function(error) { %>
+        <p><%= error.msg %></p>
+      <% }) %>
+    </div>
+  </div>
+<% } %>
+
+<main>
+  <form action="" method="POST" class="form form-post">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        placeholder="Enter title"
+        required
+        value="<%= typeof post !== 'undefined' ? post.title : '' %>"
+      />
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea
+        class="form-control"
+        id="content"
+        name="content"
+        rows="3"
+        placeholder="Enter content"
+        required
+      >
+      <%= typeof post !== 'undefined' ? post.content : '' %> </textarea
+      >
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</main>
+
+</body>
+</html>
