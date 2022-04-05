@@ -2,16 +2,18 @@
   const userIcon = document.querySelector('.user-icon');
   const navMenu = document.querySelector('.nav__list--sub');
 
-  userIcon.addEventListener(
-    'click',
-    () => {
+  if (userIcon) {
+    userIcon.addEventListener('click', (e) => {
       navMenu.classList.toggle('active');
-      document.addEventListener('click', (e) => {
-        if (e.target !== userIcon) {
-          navMenu.classList.remove('active');
-        }
-      });
-    },
-    { bubbles: false }
-  );
+      e.stopPropagation();
+      document.removeEventListener('click', closeNavMenu);
+      document.addEventListener('click', closeNavMenu, { once: true });
+    });
+  }
+
+  function closeNavMenu(e) {
+    if (e.target !== userIcon) {
+      navMenu.classList.remove('active');
+    }
+  }
 })();
