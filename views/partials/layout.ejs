@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <script defer src="/javascripts/navMenu.js"></script>
     <title><%= title %></title>
   </head>
   <body>
@@ -21,14 +22,19 @@
           </li>
           <% } else {%>
           <li class="nav__item">
-            <a href="/create-post" class="nav__link"
-              ><span class="plus">+</span> <span>New Post</span></a
+            <a href="/create-post" class="nav__link link-post"
+              ><span class="link-plus">+</span> New Post</a
             >
           </li>
           <li class="nav__item nav--sub">
             <img src="images/user.svg" class="user-icon" alt="User" />
-            <span class="user-name"><%= locals.currentUser.username %></span>
+
             <ul class="nav__list--sub">
+              <li class="nav__item">
+                <span class="user-name"
+                  ><%= locals.currentUser.username %></span
+                >
+              </li>
               <li class="nav__item">
                 <a href="/convert-member" class="nav__link">Become a Member</a>
               </li>
