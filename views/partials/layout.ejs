@@ -14,24 +14,31 @@
         <ul class="nav__list">
           <% if(!locals.currentUser) { %>
           <li class="nav__item">
-            <a href="/log-in" class="nav__link">Log In</a>
+            <a href="/log-in" class="nav__link">Sign In</a>
           </li>
           <li class="nav__item">
             <a href="/sign-up" class="nav__link">Sign Up</a>
           </li>
           <% } else {%>
           <li class="nav__item">
-            <a href="/create-post" class="nav__link">Create a Post</a>
+            <a href="/create-post" class="nav__link"
+              ><span class="plus">+</span> <span>New Post</span></a
+            >
           </li>
-
-          <li class="nav__item">
-            <a href="/convert-member" class="nav__link">Become a Member</a>
-          </li>
-          <li class="nav__item">
-            <a href="/convert-admin" class="nav__link">Become an Admin</a>
-          </li>
-          <li class="nav__item">
-            <a href="/log-out" class="nav__link">Sign Out</a>
+          <li class="nav__item nav--sub">
+            <img src="images/user.svg" class="user-icon" alt="User" />
+            <span class="user-name"><%= locals.currentUser.username %></span>
+            <ul class="nav__list--sub">
+              <li class="nav__item">
+                <a href="/convert-member" class="nav__link">Become a Member</a>
+              </li>
+              <li class="nav__item">
+                <a href="/convert-admin" class="nav__link">Become an Admin</a>
+              </li>
+              <li class="nav__item">
+                <a href="/log-out" class="nav__link">Sign Out</a>
+              </li>
+            </ul>
           </li>
           <% } %>
         </ul>

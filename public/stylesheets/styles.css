@@ -3,6 +3,7 @@
   --color-gold: #ffcc20;
   --color-white: #e8e8e8;
   --color-blue: #026a99;
+  --color-black: #434343;
   --color-danger: #ff1212;
 }
 
@@ -52,7 +53,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--color-dark);
+  color: var(--color-black);
   background-color: var(--color-gold);
 }
 
@@ -61,7 +62,6 @@ ul {
 }
 
 .title {
-  color: var(--color-blue);
   padding-left: 2rem;
 }
 
@@ -70,6 +70,30 @@ ul {
   gap: 1rem;
   align-items: center;
   padding-right: 2rem;
+}
+
+.plus {
+  color: rgb(23, 174, 98);
+  font-size: 3rem;
+  vertical-align: text-bottom;
+}
+
+.user-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  vertical-align: text-bottom;
+}
+
+.nav__list--sub {
+  display: none;
+  position: absolute;
+  top: 3.5rem;
+  right: 0;
+  background-color: var(--color-dark);
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.25);
 }
 
 .page-header {
