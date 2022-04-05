@@ -56,6 +56,7 @@ ul {
   align-items: center;
   color: var(--color-black);
   background-color: var(--color-gold);
+  z-index: 1;
 }
 
 .header a {
@@ -82,6 +83,7 @@ ul {
 .link-plus {
   color: var(--color-green);
   font-size: 2rem;
+  font-weight: bold;
   padding-bottom: 0.3rem;
 }
 
@@ -98,7 +100,7 @@ ul {
   position: absolute;
   top: 4rem;
   right: 1rem;
-  background-color: #1b6955;
+  background-color: #026a99;
   border-radius: 0.5rem;
   padding: 1rem 0.5rem 1rem 1rem;
   box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.25);
@@ -152,4 +154,56 @@ ul {
 .alert {
   text-align: center;
   background-color: var(--color-danger);
+}
+
+.posts-main {
+  margin-top: 5rem;
+}
+
+.post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  width: 80%;
+  background-color: rgba(70, 70, 70, 0.5);
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s ease-in-out;
+}
+
+.post:hover {
+  position: relative;
+  transform: scale(1.1);
+  z-index: 0;
+}
+
+.lottie {
+  width: 8rem;
+  height: 8rem;
+}
+
+.post__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 70%;
+  padding: 2rem;
+  border-left: 2px double var(--color-gold);
+}
+
+.post__content {
+  background-color: rgba(70, 70, 70, 0.8);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.post__author,
+.post__timestamp {
+  color: var(--color-blue);
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: right;
 }
