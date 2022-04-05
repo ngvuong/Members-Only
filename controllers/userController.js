@@ -72,3 +72,47 @@ exports.user_logout = function (req, res) {
   req.logout();
   res.redirect('/');
 };
+
+exports.user_member_get = function (req, res, next) {
+  res.render('convert_member', { title: 'Become a Member' });
+};
+
+exports.user_member_post = function (req, res, next) {
+  if (req.body.password === process.env.MEMBERSHIP_CODE) {
+    User.findById(req.user._id, (err, user) => {
+      if (err) return next(err);
+      user.membership = 'member';
+      user.save((err) => {
+        if (err) return next(err);
+        res.redirect('/');
+      });
+    });
+  } else {
+    res.render('convert_member', {
+      title: 'Become a Member',
+      errors: [{ msg: 'Incorrect code' }],
+    });
+  }
+};
+
+exports.user_admin_get = function (req, res, next) {
+  res.render('convert_admin', { title: 'Become an Admin' });
+};
+
+exports.user_admin_post = function (req, res, next) {
+  if (req.body.password === process.env.ADMIN_CODE) {
+    User.findById(req.user._id, (err, user) => {
+      if (err) return next(err);
+      user.membership = 'admin';
+      user.save((err) => {
+        if (err) return next(err);
+        res.redirect('/');
+      });
+    });
+  } else {
+    res.render('convert_admin', {
+      title: 'Become an Admin',
+      errors: [{ msg: 'Incorrect code' }],
+    });
+  }
+};
