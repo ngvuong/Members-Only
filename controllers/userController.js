@@ -12,6 +12,12 @@ exports.user_create_post = [
     .trim()
     .isLength({ min: 3 })
     .withMessage('Username must be at least 3 characters long')
+    .custom((value) => {
+      return User.findOne({ username: value }).then((user) => {
+        if (user) return Promise.reject('Username already exists');
+      });
+    })
+    .withMessage('Username already exists')
     .escape(),
   body('password')
     .trim()
@@ -42,7 +48,9 @@ exports.user_create_post = [
         });
         user.save((err) => {
           if (err) return next(err);
-          res.redirect('/');
+          passport.authenticate('local')(req, res, () => {
+            res.redirect('/');
+          });
         });
       });
     }

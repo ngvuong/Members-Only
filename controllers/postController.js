@@ -2,6 +2,7 @@ const { body, validationResult } = require('express-validator');
 const { format } = require('date-fns');
 
 const Post = require('../models/post');
+const User = require('../models/user');
 
 exports.index = async function (req, res, next) {
   try {
@@ -17,7 +18,23 @@ exports.index = async function (req, res, next) {
   }
 };
 
-// 'MMM do, yyyy \@ H:mm'
+exports.member = async function (req, res, next) {
+  const { id } = req.params;
+
+  try {
+    const user = await User.findById(id);
+    const posts = await Post.find({ author: id })
+      .populate('author')
+      .sort({ created: 'desc' });
+    res.render('member', {
+      title: user.username,
+      user,
+      posts,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
 exports.post_create_get = function (req, res, next) {
   res.render('create_post', { title: 'Create Post' });

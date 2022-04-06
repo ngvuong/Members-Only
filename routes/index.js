@@ -8,6 +8,9 @@ const checkAuth = require('../utils/checkAuth');
 // Home page
 router.get('/', postController.index);
 
+// Member page
+router.get('/member/:id', checkAuth, postController.member);
+
 // User auth routes
 router.get('/sign-up', userController.user_create_get);
 

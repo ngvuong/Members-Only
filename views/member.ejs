@@ -1,0 +1,15 @@
+<%- include('partials/layout') %>
+
+<main class="posts-main">
+
+  <h2 class="page-header">Posts by <%= user.username %> </h2>
+
+    <% if(!posts.length) { %> 
+      <p>You haven't made any posts yet</p>
+    <% } else {%> 
+      <%- include('partials/posts') %> 
+    <% } %> 
+</main>
+
+</body>
+</html>
