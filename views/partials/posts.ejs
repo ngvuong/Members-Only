@@ -1,0 +1,34 @@
+<% posts.forEach(function(post) { %>
+  <article class="post">
+    <div class="lottie"
+    data-animation-path="https://api.minimalavatars.com/random-lottie">
+    </div>
+    <div class="post__wrapper">
+      <h3 class="post__title"><%= post.title %></h3>
+      <p class="post__content"><%= post.content %></p>
+      <div class="post_info">
+        <p class="post__author">
+          by 
+          <% if(locals.currentUser && locals.currentUser.membership !== 'none') { %> 
+          <a href="/member/<%= post.author._id %>"><%= post.author.username %></a>
+          <% } else {%> 
+            <span>Anonymous</span>
+          <% } %> 
+        </p>
+        <p class="post__timestamp">
+          <%= locals.currentUser && locals.currentUser.membership !== 'none' ? post.created : 'unknown' %>
+        </p>
+      </div>
+      <% if(locals.currentUser && locals.currentUser.membership === 'admin') {%>
+        <form action="/delete-post" method="POST" class="form-delete">
+          <input type="hidden" name="postid" value="<%= post._id %>">
+          <button type="submit" class="btn btn-danger">DELETE</button>
+        </form>
+      <% } %>
+    </div>
+  </article>
+<% }) %> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.10/lottie.min.js" integrity="sha512-MgjcOY0sw/iCwhkTOODJmQ4aEhXJVq3JXeIbm+aFo99qYx2hCyjmqnD+9tZSVYTXvvko7I82jQOEDoecdGeIIA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+</body>
+</html>

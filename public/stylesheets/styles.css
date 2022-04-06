@@ -39,6 +39,10 @@ textarea {
   resize: vertical;
 }
 
+h2 {
+  font-size: 2.5rem;
+}
+
 a:link,
 a:visited {
   color: var(--color-blue);
@@ -163,10 +167,6 @@ ul {
   text-align: center;
   background-color: var(--color-danger);
   padding: 1rem;
-}
-
-.posts-main {
-  margin-top: 5rem;
 }
 
 .post {

@@ -33,13 +33,15 @@
             >
           </li>
           <li class="nav__item nav--sub">
-            <img src="images/user.svg" class="user-icon" alt="User" />
+            <img src="/images/user.svg" class="user-icon" alt="User" />
 
             <ul class="nav__list--sub">
               <li class="nav__item">
-                <span class="user-name"
-                  ><%= locals.currentUser.username %></span
-                >
+                <a
+                  href="/member/<%= locals.currentUser._id %>"
+                  class="user-name"
+                  ><%= locals.currentUser.username %>
+                </a>
               </li>
               <li class="nav__item">
                 <a href="/convert-member" class="nav__link">Become a Member</a>
