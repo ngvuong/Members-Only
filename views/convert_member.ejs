@@ -3,22 +3,25 @@
 <main>
   <h2 class="page-header">Join the Exclusive Club</h2>
 
-  <%- include('partials/errors') %> 
-
-  <form action="" method="POST" class="form form-member">
-    <div class="form-group">
-      <label for="password">Members Acccess Code</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        name="password"
-        placeholder="Enter code"
-        required
-      />
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  <% if(locals.currentUser && locals.currentUser.membership === 'none') {%> 
+    <form action="" method="POST" class="form form-member">
+      <%- include('partials/errors') %> 
+      <div class="form-group">
+        <label for="password">Members Acccess Code</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Enter code"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  <% } else { %> 
+    <p>You are already <%= locals.currentUser.membership === 'member' ? 'a member' : 'an admin' %> </p>
+  <% } %> 
 </main>
 
 </body>

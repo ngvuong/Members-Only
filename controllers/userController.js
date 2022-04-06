@@ -12,10 +12,9 @@ exports.user_create_post = [
     .trim()
     .isLength({ min: 3 })
     .withMessage('Username must be at least 3 characters long')
-    .custom((value) => {
-      return User.findOne({ username: value }).then((user) => {
-        if (user) return Promise.reject('Username already exists');
-      });
+    .custom(async (value) => {
+      const user = await User.findOne({ username: value });
+      if (user) return Promise.reject('Username already exists');
     })
     .withMessage('Username already exists')
     .escape(),

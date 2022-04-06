@@ -3,9 +3,9 @@
 <main>
   <h2 class="page-header">Become an Admin</h2>
 
-  <%- include('partials/errors') %> 
-
+  <% if(locals.currentUser && locals.currentUser.membership !== 'admin') {%> 
   <form action="" method="POST" class="form form-admin">
+    <%- include('partials/errors') %> 
     <div class="form-group">
       <label for="password">Admin Acccess Code</label>
       <input
@@ -19,6 +19,9 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <% } else { %> 
+    <p>You are already an Admin</p>
+  <% } %> 
 </main>
 
 </body>

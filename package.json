@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A simple members only message board app",
   "main": "app.js",
+  "engines": {
+    "node": "v16.14.0"
+  },
   "scripts": {
     "start": "nodemon app.js"
   },

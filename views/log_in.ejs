@@ -6,9 +6,8 @@
 
   <p>Not a memer yet? <a href="/sign-up">Sign Up</a></p>
 
-  <%- include('partials/errors') %> 
-
   <form action="/log-in" method="POST" class="form form-login">
+    <%- include('partials/errors') %> 
     <div class="form-group">
       <label for="username">Username</label>
       <input

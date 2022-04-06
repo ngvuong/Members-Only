@@ -1,21 +1,10 @@
 <%- include('partials/layout') %>
 
-<% if(locals.errors) {%>
-  <div class="alert-container">
-    <label for="dismiss">×</label>
-    <input type="checkbox" id="dismiss">
-    <div class="alert alert-danger">
-      <% errors.forEach(function(error) { %>
-        <p><%= error.msg %></p>
-      <% }) %>
-    </div>
-  </div>
-<% } %>
-
 <main>
   <h2 class="page-header">Create a new post</h2>
 
   <form action="" method="POST" class="form form-post">
+    <%- include('partials/errors') %> 
     <div class="form-group">
       <label for="title">Title</label>
       <input

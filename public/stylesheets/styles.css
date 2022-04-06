@@ -138,8 +138,6 @@ ul {
 
 .alert-container {
   position: relative;
-  width: 70%;
-  margin: 0 auto;
 }
 
 .alert-container label {
@@ -227,6 +225,7 @@ ul {
 }
 
 .btn {
+  font-family: inherit;
   font-size: inherit;
   text-transform: uppercase;
   padding: 0.5rem;
