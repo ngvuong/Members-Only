@@ -10,18 +10,20 @@
           data-animation-path="https://api.minimalavatars.com/random-lottie">
           </div>
           <div class="post__wrapper">
-            <h3 class="post__title"><%= post.title %></h3>
+            <h2 class="post__title"><%= post.title %></h2>
             <p class="post__content"><%= post.content %></p>
-            <span class="post__author">
-              by <%= locals.currentUser && locals.currentUser.membership !== 'none' ? post.author.username : 'Anonymous' %>
-            </span>
-            <span class="post__timestamp">
-              <%= locals.currentUser && locals.currentUser.membership !== 'none' ? post.created : 'unknown' %>
-            </span>
+            <div class="post_info">
+              <p class="post__author">
+                by <%= locals.currentUser && locals.currentUser.membership !== 'none' ? post.author.username : 'Anonymous' %>
+              </p>
+              <p class="post__timestamp">
+                <%= locals.currentUser && locals.currentUser.membership !== 'none' ? post.created : 'unknown' %>
+              </p>
+            </div>
             <% if(locals.currentUser && locals.currentUser.membership === 'admin') {%>
               <form action="/delete-post" method="POST" class="form form-delete">
                 <input type="hidden" name="postid" value="<%= post._id %>">
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger">DELETE</button>
               </form>
             <% } %>
           </div>
@@ -30,15 +32,6 @@
     <% } %> 
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.10/lottie.min.js" integrity="sha512-MgjcOY0sw/iCwhkTOODJmQ4aEhXJVq3JXeIbm+aFo99qYx2hCyjmqnD+9tZSVYTXvvko7I82jQOEDoecdGeIIA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  const lottie = document.querySelector('.lottie');
-  lottie.loadAnimation({
-    container: element, 
-    renderer: 'svg',
-    loop: true,
-    autoplay: true,
-    path: 'https://api.minimalavatars.com/random-lottie' 
-  });
 </script>
-
 </body>
 </html>
