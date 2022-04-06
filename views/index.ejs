@@ -21,7 +21,7 @@
               </p>
             </div>
             <% if(locals.currentUser && locals.currentUser.membership === 'admin') {%>
-              <form action="/delete-post" method="POST" class="form form-delete">
+              <form action="/delete-post" method="POST" class="form-delete">
                 <input type="hidden" name="postid" value="<%= post._id %>">
                 <button type="submit" class="btn btn-danger">DELETE</button>
               </form>

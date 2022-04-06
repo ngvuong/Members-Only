@@ -3,17 +3,7 @@
 <main>
   <h2 class="page-header">Join the Exclusive Club</h2>
 
-  <% if(locals.errors) {%>
-    <div class="alert-container">
-      <input type="checkbox" id="dismiss">
-      <label for="dismiss">×</label>
-      <div class="alert alert-danger">
-        <% errors.forEach(function(error) { %>
-          <p><%= error.msg %></p>
-        <% }) %>
-      </div>
-    </div>
-  <% } %>
+  <%- include('partials/errors') %> 
 
   <form action="" method="POST" class="form form-member">
     <div class="form-group">

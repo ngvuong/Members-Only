@@ -1,14 +1,11 @@
 <%- include('partials/layout') %>
 
-<% if(locals.errors) {%>
-  <div class="alert alert-danger">
-    <% errors.forEach(function(error) { %>
-    <p><%= error.msg %></p>
-    <% }) %>
-  </div>
-<% } %>
-
 <main>
+
+  <h2 class="page-header">Sign In</h2>
+
+  <%- include('partials/errors') %> 
+
   <form action="/log-in" method="POST" class="form form-login">
     <div class="form-group">
       <label for="username">Username</label>
