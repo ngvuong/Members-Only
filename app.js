@@ -6,7 +6,6 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const compression = require('compression');
-const helmet = require('helmet');
 const path = require('path');
 const logger = require('morgan');
 require('dotenv').config();
@@ -65,7 +64,6 @@ passport.deserializeUser(function (id, done) {
 
 // Middlewares setup
 app.use(compression());
-app.use(helmet());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(logger('dev'));
