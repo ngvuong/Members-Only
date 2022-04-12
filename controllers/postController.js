@@ -8,7 +8,7 @@ exports.index = async function (req, res, next) {
   try {
     const posts = await Post.find()
       .populate('author')
-      .sort({ created: 'desc' });
+      .sort({ createdAt: 'desc' });
     res.render('index', {
       title: 'Members Only',
       posts,
